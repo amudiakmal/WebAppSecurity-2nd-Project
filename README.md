@@ -55,6 +55,7 @@ Authorization, File Security Principle - Akmal Amudi
 
 For File Security Principle,
  To prevent from file leaks, using doPost to pass sensitive data or to protect it and we also create isErrorPage where if an error occured, the page will directly bring to error page. This will not revealing any source code to this webpage. To prevent from data leaks. We using it in payment and calculate page jsp. The payment to protect user data from attacker.
+ 
 <img src="error1.png"/>
  
  <img src="error2.png"/>
