@@ -22,6 +22,16 @@ Web applictaion security is implementation security in web application. There ar
 
 # Project Scope
 Input Validation, Authentication - Afiq Nukman
+Server side Validation vs Client side validation.
+there are two different types of validation, the client side validation and server side validation. The server side use languages such as PHP and ASP.Net. The client side validation usually uses JavaScript. The client side isnt secure like server side as the hacker can easily bypass the client side scripting language and submit dangerous input to the server. 
+As for that we try to implement recaptcha and verificationcode on the client server. the user need to use the recaptcha and insert their phone number, the data will be store inside the firebase, and then it will send verification code back to the user. By doing this we didnt store any password and email on our firebase. So if our firebase got breech the only data in there is phone number.
+
+<img src="jet1.png"/>
+
+<img src="jet2.png"/>
+
+<img src="jet3.png"/>
+
 
 XSS and CSRF Prevention - Yusuf
 A weakness that permits an assailant to add his own content code to a weak web application's page. It utilizes HTML structure rather than URL encryption layer of SSL/TLS to ensure the traffic (HTTPS) diverse with XSS. 
