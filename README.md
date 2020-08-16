@@ -54,6 +54,10 @@ Authorization, File Security Principle - Akmal Amudi
  In Authorization, we make separated role for sepaeated duties. For user, they only can view from user side and admin side, they only can view from administration side. By doing this, we manage to do mappling application roles to application server groups. Map the role of user login defined in the application to the group of user defined on the Application Server by adding a security-role-mapping element to the sun-web.xml runtime deployment descriptor file. We create another xml file mapping with user login page.
 
 For File Security Principle,
- To prevent from file leaks, using doPost to pass sensitive data or to protect it.
+ To prevent from file leaks, using doPost to pass sensitive data or to protect it and we also create isErrorPage where if an error occured, the page will directly bring to error page. This will not revealing any source code to this webpage. To prevent from data leaks. We using it in payment and calculate page jsp. The payment to protect user data from attacker.
+ img src="error1.png"/>
+ 
+ img src="error2.png"/>
+
 We hardening our web server by configure Tomcat to support SSL or https. This could to help to reduce attack on the server. Setting started from command prompt.
 <img src="cmd.png"/>
