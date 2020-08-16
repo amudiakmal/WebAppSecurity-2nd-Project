@@ -65,3 +65,5 @@ For File Security Principle,
 
 We hardening our web server by configure Tomcat to support SSL or https. This could to help to reduce attack on the server. Setting started from command prompt.
 <img src="cmd.png"/>
+
+<img src="server.png"/>
