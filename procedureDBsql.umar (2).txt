@@ -1,0 +1,156 @@
+
+//view data//
+DELIMITER //
+
+CREATE PROCEDURE GetCof(
+	IN cofname VARCHAR,
+	OUT cofcode VARCHAR,
+	OUT cofdesc VARCHAR,
+	OUT cofvalue VARCHAR
+)
+BEGIN
+	SELECT * 
+ 	FROM coffee
+		WHERE 
+	cofname = name
+	AND
+	cofcode = coffeeID
+	AND
+	cofdesc = description
+	AND 
+	cofvalue = price
+	;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE GetIng(
+	IN ingcode VARCHAR,
+	OUT ing VARCHAR,
+	OUT ingvalue VARCHAR,
+)
+BEGIN
+	SELECT * 
+ 	FROM ingredient
+		WHERE 
+	ingcode = ingredientID
+	AND
+	ing = name
+	AND 
+	ingvalue = price
+	;
+END //
+
+
+DELIMITER ;
+
+//Update//
+
+DELIMITER // ;
+
+CREATE PROCEDURE Update_coffe_info ( IN cofcode VARCHAR, IN cofname VARCHAR)
+
+BEGIN
+	UPDATE coffee
+	SET
+	CoffeeID = cofcode  WHERE name = cofname;
+END //
+
+DELIMITER//;
+
+
+DELIMITER // ;
+
+CREATE PROCEDURE Update_ingredient_info ( IN ingcode VARCHAR, IN ing VARCHAR)
+
+BEGIN
+	UPDATE ingredient
+	SET
+	ingredientID = ingcode  WHERE name = ing;
+END //
+
+DELIMITER//;
+
+
+
+//procedure to treat user input as an input instead of query//
+
+CREATE PROCEDURE [dbo].[usp_SearchCoffee]  
+(
+	  @CofeeID				VARCHAR = NULL	
+	 ,@name					VARCHAR = NULL	
+	 ,@description        			VARCHAR = NULL	
+	 ,@price				INT     = NULL	
+	 
+	
+)
+AS          
+BEGIN      
+
+	DECLARE @SQL				VARCHAR
+	DECLARE @ParameterDef			VARCHAR
+ 
+    SET @ParameterDef =      	'@CoffeeID	VARCHAR,
+				 @name		VARCHAR,
+				 @description	VARCHAR,
+				 @price		INT'
+ 
+
+SET @SQL = 'SELECT CoffeeID, name, Description, price
+	    FROM Coffee WHERE CoffeeID=@CoffeeID ' 
+ 
+IF @CoffeeID IS NOT NULL AND @CoffeeID <> 0 
+SET @SQL = @SQL+ ' AND CoffeeID = @CoffeeID'
+ 
+IF @name IS NOT NULL AND @name <> ''
+SET @SQL = @SQL+ ' AND name like ''%'' + @name + ''%'''
+ 
+IF @descriptiom IS NOT NULL AND @description <>''
+SET @SQL = @SQL+ ' AND description like ''%'' + @description + ''%'''
+ 
+IF @Price IS NOT NULL AND @Price <>''
+SET @SQL = @SQL+  ' AND Price like ''%'' + @Price + ''%'''
+ 
+EXEC sp_Executesql     @SQL,  @ParameterDef, @CoffeeID=@CoffeeID,@name=@name,@Description=@Description,@price=@price
+                
+END
+
+ 
+CREATE PROCEDURE [dbo].[usp_SearchIngredient]  
+(
+	  @IngredientID				VARCHAR = NULL	
+	 ,@name					VARCHAR = NULL	
+	 ,@price				INT     = NULL	
+	 
+	
+)
+AS          
+BEGIN      
+
+	DECLARE @SQL				VARCHAR
+	DECLARE @ParameterDef			VARCHAR
+ 
+    SET @ParameterDef =      	'@IngredientID	VARCHAR,
+				 @name		VARCHAR,
+				 @price		VARCHAR'
+ 
+
+SET @SQL = 'SELECT IngredientID, name, price
+	    FROM Ingredient WHERE IngredientID=IngredientID ' 
+ 
+IF @IngredientID IS NOT NULL AND @IngredientID ''
+SET @SQL = @SQL+ ' AND IngredientID = @IngredientID'
+ 
+IF @name IS NOT NULL AND @name <> ''
+SET @SQL = @SQL+ ' AND name like ''%'' + @name + ''%'''
+ 
+IF @Price IS NOT NULL AND @Price <>''
+SET @SQL = @SQL+  ' AND Price like ''%'' + @Price + ''%'''
+ 
+EXEC sp_Executesql     @SQL,  @ParameterDef, @IngredientID=@IngredientID,@name=@name,@price=@price
+                
+END
+ 
