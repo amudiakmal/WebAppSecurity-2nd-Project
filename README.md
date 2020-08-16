@@ -57,3 +57,4 @@ In Authorization, we make separated role for sepaeated duties. For user, they on
 For File Security Principle,
 To prevent from file leaks, using doPost to pass sensitive data or to protect it.
 We hardening our web server by configure Tomcat to support SSL or https. This could to help to reduce attack on the server. Setting started from command prompt.
+<img src="cmd.png"/>
