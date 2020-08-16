@@ -50,9 +50,12 @@ Database Security Principles - Umar Hakimi
  As for the database server, I enhance it with stored procedure. This is to ensure that the data that was called were coming from  the procedure instead of the database itself. This can help me secure the properties of the database to avoid the attacker knowing the name where each data stored. Through this method, I also can avoid sql injection and Insecure Direct Object Reference due to different names for data request and the real database. Other than that, I also used sp_executequery instead of EXEC for reading input in SQL. This to my understanding can avoid treating user input as a execute string. For example, we have an input to request coffee name. If the user insert 'select * from coffee* for the coffee name, this will trigger an execute command in SQL. Due to sp_executequery, instead of SQL reading the whole input as parameter, the sql only recognize the 'select * from coffee' as a data name. So SQL will only search 'select * from coffee' as a coffee name in coffee table and return null or no coffee name found.
 
 
-Authorization, File Security Principle - Akmal Amudi
+Authorization - Akmal Amudi
  In Authorization, we make separated role for sepaeated duties. For user, they only can view from user side and admin side, they only can view from administration side. By doing this, we manage to do mappling application roles to application server groups. Map the role of user login defined in the application to the group of user defined on the Application Server by adding a security-role-mapping element to the sun-web.xml runtime deployment descriptor file. We create another xml file mapping with user login page.
+ 
+ <img src="rolemapping.png"/>
 
+File Security Principle - Akmal Amudi
 For File Security Principle,
  To prevent from file leaks, using doPost to pass sensitive data or to protect it and we also create isErrorPage where if an error occured, the page will directly bring to error page. This will not revealing any source code to this webpage. To prevent from data leaks. We using it in payment and calculate page jsp. The payment to protect user data from attacker.
  
