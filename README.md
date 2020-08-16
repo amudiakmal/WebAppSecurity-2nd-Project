@@ -27,9 +27,11 @@ Cross-Site Scripting (XSS) attacks occur when:
 Injection is an attacker’s attempt to send data to an application in a way that will change the change the command and follow the new line. For example, the most common example is SQL injection.
 How to prevent?
 Our defence mechanism to prevent XSS attack is first to encode specific important part of our page which is the payment page  
+
 <img src="cxx1.jpg"/>
 
 And also we tried to encode several other part also
+
 <img src="cxx2.jpg"/>
  
 We also filtered our code with avoiding any <script> tag to sanitize the website and make it safe HTML. We also planned to use HttpOnly attribute to flag cookies but got a few problem with the nginx. 
